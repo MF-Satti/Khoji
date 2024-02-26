@@ -1,10 +1,3 @@
-//
-//  Constants.swift
-//  Khoji
-//
-//  Created by M. Faizan Satti on 26/02/2024.
-//
-
 import Foundation
 
 struct UIConstants {
@@ -12,4 +5,5 @@ struct UIConstants {
     static let searchBarWidth: CGFloat = 480
     static let searchBarPadding: CGFloat = 10
     static let searchBarFontSize: CGFloat = 24
+    static let iconSize: CGFloat = 25
 }

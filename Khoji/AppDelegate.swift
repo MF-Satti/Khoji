@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Khoji
-//
-//  Created by M. Faizan Satti on 26/02/2024.
-//
-
 import Foundation
 import AppKit
 import SwiftUI
