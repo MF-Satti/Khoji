@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var searchText = ""
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        TextField("Search...", text: $searchText)
+            .padding(UIConstants.searchBarPadding)
+            .frame(height: UIConstants.searchBarHeight)
+            .font(.system(size: UIConstants.searchBarFontSize))
+            .shadow(radius: 5)
     }
 }
 
-#Preview {
+
+/*#Preview {
     ContentView()
-}
+}*/
