@@ -5,7 +5,7 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            TextField("Search...", text: $searchText)
+            TextField("Search here...", text: $searchText)
                 .padding(UIConstants.searchBarPadding)
                 .frame(height: UIConstants.searchBarHeight)
                 .font(.system(size: UIConstants.searchBarFontSize))
@@ -22,6 +22,8 @@ struct ContentView: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, UIConstants.searchBarPadding)
         }
+        .background(Color(.systemGray))
+        .cornerRadius(UIConstants.searchBarCornerRadius)
     }
 }
 
