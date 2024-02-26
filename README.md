@@ -1,0 +1,2 @@
+# Khoji
+ Spotlight inspired app
