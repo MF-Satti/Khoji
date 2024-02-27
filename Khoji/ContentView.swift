@@ -68,24 +68,65 @@ struct ContentView: View {
             let url = URL(fileURLWithPath: path).standardizedFileURL
             NSWorkspace.shared.open(url)
         } else {
-            // If no stored access, request folder access first
-            requestAccessToDownloadsFolder {
-                // Retry opening the file after obtaining access
-                self.openFile(atPath: path)
+            // Dynamically determine the directory from the path
+            if let directory = directory(forPath: path) {
+                // If no stored access, request folder access first for the determined directory
+                requestAccessToFolder(directory) {
+                    // Retry opening the file after obtaining access
+                    self.openFile(atPath: path)
+                }
+            } else {
+                // Handle case where the directory is not one of the specified types or access cannot be determined
+                print("Cannot determine folder access for path: \(path)")
             }
         }
     }
     
-    func requestAccessToDownloadsFolder(completion: @escaping () -> Void) {
+    func directory(forPath path: String) -> AccessibleDirectory? {
+        let standardizedPath = path
+        /*let standardizedPath = URL(fileURLWithPath: path).standardized.path
+        guard let downloadsPath = AccessibleDirectory.downloads.url?.path,
+              let documentsPath = AccessibleDirectory.documents.url?.path,
+              let desktopPath = AccessibleDirectory.desktop.url?.path else {
+            return nil
+        }
+         if standardizedPath.hasPrefix("Downloads") {
+             return .downloads
+         } else if standardizedPath.hasPrefix("Documents") {
+             return .documents
+         } else if standardizedPath.hasPrefix("Desktop") {
+             return .desktop
+         }
+         
+         */
+        
+        // May only work for sandboxed environment
+        if standardizedPath.contains("Downloads") {
+            return .downloads
+        } else if standardizedPath.contains("Documents") {
+            return .documents
+        } else if standardizedPath.contains("Desktop") {
+            return .desktop
+        }
+        
+        return nil
+    }
+    
+    func requestAccessToFolder(_ directory: AccessibleDirectory, completion: @escaping () -> Void) {
         DispatchQueue.main.async {
+            guard let directoryURL = directory.url else {
+                print("Directory URL not found.")
+                return
+            }
+
             let openPanel = NSOpenPanel()
-            openPanel.message = "Please select the Downloads folder to grant access"
+            openPanel.message = "Please select the \(directory) folder to grant access"
             openPanel.prompt = "Grant Access"
             openPanel.canChooseFiles = false
             openPanel.canChooseDirectories = true
             openPanel.canCreateDirectories = false
             openPanel.allowsMultipleSelection = false
-            openPanel.directoryURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first
+            openPanel.directoryURL = directoryURL
             
             openPanel.begin { response in
                 if response == .OK, let url = openPanel.url {
@@ -242,6 +283,24 @@ class SharedState: ObservableObject {
         
         DispatchQueue.main.async {
             self.searchResults = results
+        }
+    }
+}
+
+// Directory type enum
+enum AccessibleDirectory {
+    case downloads
+    case documents
+    case desktop
+
+    var url: URL? {
+        switch self {
+        case .downloads:
+            return FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first
+        case .documents:
+            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        case .desktop:
+            return FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first
         }
     }
 }
