@@ -50,7 +50,7 @@ class WindowManager {
         window.backgroundColor = NSColor.clear
         window.hasShadow = true
         
-        let contentView = NSHostingView(rootView: ContentView(sharedState: sharedState))
+        let contentView = NSHostingView(rootView: ContentView(searchSharedState: sharedState))
         window.contentView = contentView
         
         window.makeKeyAndOrderFront(nil)

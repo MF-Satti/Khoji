@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var sharedState: SearchViewModel
+    @ObservedObject var searchSharedState: SearchViewModel
     
     var body: some View {
         VStack {
             // Search bar
             HStack {
-                TextField("Search here...", text: $sharedState.searchText)
+                TextField("Search here...", text: $searchSharedState.searchText)
                     .padding(UIConstants.searchBarPadding)
                     .frame(height: UIConstants.searchBarHeight)
                     .font(.system(size: UIConstants.searchBarFontSize))
@@ -26,8 +26,8 @@ struct ContentView: View {
             .background(Color(.systemGray))
             .cornerRadius(UIConstants.searchBarCornerRadius)
             
-            if !sharedState.searchText.isEmpty {
-                List(sharedState.searchResults) { result in
+            if !searchSharedState.searchText.isEmpty {
+                List(searchSharedState.searchResults) { result in
                     Button(action: {
                         openFile(atPath: result.path)
                     }) {
