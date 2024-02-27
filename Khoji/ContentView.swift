@@ -3,6 +3,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
     
+    @State private var showSettings = false
+    @State private var settings = SearchSettings()
+    
     var body: some View {
         VStack {
             // Search bar
@@ -13,7 +16,7 @@ struct ContentView: View {
                     .font(.system(size: UIConstants.searchBarFontSize))
                     .shadow(radius: 5)
                 Button(action: {
-                    // TODO: Add settings action here for advanced search criteria, search by type, size, date etc
+                    showSettings = true
                 }) {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -22,6 +25,9 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
+                .sheet(isPresented: $showSettings) {
+                    SearchSettingsView(settings: $settings)
+                }
             }
             .background(Color(.systemGray))
             .cornerRadius(UIConstants.searchBarCornerRadius)
@@ -68,4 +74,33 @@ struct ContentView: View {
         formatter.timeStyle = .short
         return formatter
     }
+}
+
+struct SearchSettingsView: View {
+    @Binding var settings: SearchSettings
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Toggle("Search by Date", isOn: $settings.searchByDate)
+                Toggle("Search by Size", isOn: $settings.searchBySize)
+            }
+            .navigationTitle("Search Settings")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .padding()
+        .frame(width: 160, height: 120)
+    }
+}
+
+struct SearchSettings {
+    var searchByDate: Bool = false
+    var searchBySize: Bool = false
 }

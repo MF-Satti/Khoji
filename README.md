@@ -22,8 +22,8 @@ In Hindi, "Khoj" refers to a search, quest, investigation, discovery, exploratio
 
 I welcome contributions from the community! Whether it's reporting a bug, submitting a feature request, or contributing to the code, your input helps make Khoji better for everyone.
 
-- **Reporting Bugs:** Please use the [GitHub Issues](#) page to report bugs.
-- **Feature Requests:** Have an idea to improve Khoji? Submit your suggestions through the [GitHub Issues](#) page.
+- **Reporting Bugs:** Please use the [GitHub Issues](https://github.com/MF-Satti/Khoji/issues) page to report bugs.
+- **Feature Requests:** Have an idea to improve Khoji? Submit your suggestions through the [GitHub Issues](https://github.com/MF-Satti/Khoji/issues) page.
 - **Code Contributions:** Interested in contributing to Khoji? Please read our [Contribution Guidelines](#) for more information on how to get started.
 
 ## References
