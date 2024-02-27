@@ -16,6 +16,7 @@
 		4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */; };
 		4D5E03792B8D91E300A33FB8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03782B8D91E300A33FB8 /* SearchViewModel.swift */; };
 		4D5E037B2B8E64CC00A33FB8 /* AccessibleDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037A2B8E64CC00A33FB8 /* AccessibleDirectory.swift */; };
+		4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		4D5E03782B8D91E300A33FB8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4D5E037A2B8E64CC00A33FB8 /* AccessibleDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleDirectory.swift; sourceTree = "<group>"; };
+		4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				4D5E033A2B8CE43400A33FB8 /* KhojiApp.swift */,
 				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
 				4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */,
+				4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */,
 				4D5E036E2B8D3D8900A33FB8 /* Constants.swift */,
 				4D5E033E2B8CE43500A33FB8 /* Assets.xcassets */,
 				4D5E03432B8CE43500A33FB8 /* Khoji.entitlements */,
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D5E03792B8D91E300A33FB8 /* SearchViewModel.swift in Sources */,
+				4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */,
 				4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */,
 				4D5E033D2B8CE43400A33FB8 /* ContentView.swift in Sources */,
 				4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */,

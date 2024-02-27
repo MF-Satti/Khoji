@@ -29,7 +29,7 @@ class SearchViewModel: ObservableObject {
         query?.stop()
         NotificationCenter.default.removeObserver(self, name: .NSMetadataQueryDidFinishGathering, object: nil)
 
-        // Initialize query
+        // Initialize query - system wide but file tap/selection limited to Downloads, Desktop and Documents
         let metadataQuery = NSMetadataQuery()
         metadataQuery.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", NSMetadataItemFSNameKey, searchText)
         metadataQuery.searchScopes = [NSMetadataQueryUserHomeScope, NSMetadataQueryLocalComputerScope]
