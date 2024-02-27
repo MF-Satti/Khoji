@@ -311,11 +311,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Kohji needs access";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -343,11 +338,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDesktopFolderUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Kohji needs access";
-				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Kohji needs access";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
