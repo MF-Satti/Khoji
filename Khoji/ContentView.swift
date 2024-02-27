@@ -29,27 +29,37 @@ struct ContentView: View {
             
             if !sharedState.searchText.isEmpty {
                 List(sharedState.searchResults) { result in
-                    HStack {
-                        Image(nsImage: result.icon)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                        
-                        VStack(alignment: .leading) {
-                            Text(result.name)
-                                .font(.headline)
-                            Text(result.path)
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                            Text("Modified: \(result.date, formatter: dateFormatter)")
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
+                    Button(action: {
+                        openFile(atPath: result.path)
+                    }) {
+                        HStack {
+                            Image(nsImage: result.icon)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                            
+                            VStack(alignment: .leading) {
+                                Text(result.name)
+                                    .font(.headline)
+                                Text(result.path)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                                Text("Modified: \(result.date, formatter: dateFormatter)")
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
+                    .buttonStyle(PlainButtonStyle()) // could use TapGesture afterwards
                 }
                 .frame(maxHeight: 200)
             }
         }
+    }
+    
+    private func openFile(atPath path: String) {
+        let url = URL(fileURLWithPath: path).standardizedFileURL
+        NSWorkspace.shared.open(url)
     }
     
     private var dateFormatter: DateFormatter {
