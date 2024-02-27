@@ -54,7 +54,7 @@ struct ContentView: View {
                 .frame(maxHeight: 200)
             }
         }.onAppear {
-            FileManagerService.shared.reestablishAccessToDownloadsFolder()
+            FileManagerService.shared.reestablishAccessToFolder()
         }
     }
     

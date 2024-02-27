@@ -5,21 +5,21 @@ class FileManagerService {
     static let shared = FileManagerService()
     
     func openFile(atPath path: String) {
-        // Check if we have stored access for the folder containing the file
+        // check if have stored access for the folder containing the file
         if hasStoredAccessForFolderContainingFile(atPath: path) {
-            // Use the stored access to open the file directly
+            // use the stored access to open the file directly
             let url = URL(fileURLWithPath: path).standardizedFileURL
             NSWorkspace.shared.open(url)
         } else {
-            // Dynamically determine the directory from the path
+            // dynamically determine the directory from the path
             if let directory = directory(forPath: path) {
-                // If no stored access, request folder access first for the determined directory
+                // if no stored access, request folder access first for the determined directory
                 requestAccessToFolder(directory) {
-                    // Retry opening the file after obtaining access
+                    // retry opening the file after obtaining access
                     self.openFile(atPath: path)
                 }
             } else {
-                // Handle case where the directory is not one of the specified types or access cannot be determined
+                // handle case where the directory is not one of the specified types or access cannot be determined
                 print("Cannot determine folder access for path: \(path)")
             }
         }
@@ -72,12 +72,12 @@ class FileManagerService {
             
             openPanel.begin { response in
                 if response == .OK, let url = openPanel.url {
-                    // Save access permissions if needed, for example using security-scoped bookmarks
+                    // save access permissions if needed, for example using security-scoped bookmarks
                     self.persistAccessToFolder(url: url)
                     completion()
                 } else {
-                    // Handle the case where the user did not grant access
-                    // Possibly show an error or alert to the user
+                    // handle the case where the user did not grant access
+                    // possibly show an error or alert to the user
                 }
             }
         }
@@ -93,8 +93,8 @@ class FileManagerService {
             let bookmarkedURL = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
             
             if isStale {
-                // The bookmark data is stale and needs to be saved again. This can happen if the file or folder was moved.
-                // For simplicity, we're not handling this case here. In a real app, you might want to save the new bookmark data.
+                // the bookmark data is stale and needs to be saved again. This can happen if the file or folder was moved.
+                // for simplicity, not handling this case here, might want to save the new bookmark data.
                 print("Bookmark data is stale")
                 return false
             }
@@ -124,14 +124,14 @@ class FileManagerService {
     private func persistAccessToFolder(url: URL) {
         do {
             let bookmarkData = try url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-            // Storing bookmark data in UserDefaults. Might use KeyChain later.
+            // storing bookmark data in UserDefaults. Might use KeyChain later.
             UserDefaults.standard.set(bookmarkData, forKey: "folderAccessBookmark")
         } catch {
             print("Error saving bookmark data: \(error)")
         }
     }
     
-    func reestablishAccessToDownloadsFolder() {
+    func reestablishAccessToFolder() {
         guard let bookmarkData = UserDefaults.standard.data(forKey: "folderAccessBookmark") else {
             return
         }
@@ -140,15 +140,15 @@ class FileManagerService {
         do {
             let bookmarkedURL = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
             if isStale {
-                // Handle stale bookmark data, maybe by requesting access again
+                // handle stale bookmark data, maybe by requesting access again
                 print("Bookmark data is stale. Need to request access again.")
                 return
             }
             
             if bookmarkedURL.startAccessingSecurityScopedResource() {
-                // Successfully re-established access.
-                // You can stop accessing when you no longer need access, or you might keep it for the app's lifetime, depending on your use case.
-                // Consider where to call `stopAccessingSecurityScopedResource()` if you start it here.
+                // successfully re-established access
+                // can stop accessing when no longer need access, or might keep it for the app's lifetime, depending on the use case.
+                // consider where to call `stopAccessingSecurityScopedResource()` if you start it here.
             } else {
                 print("Failed to re-establish access using bookmark.")
             }

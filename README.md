@@ -35,6 +35,10 @@ I welcome contributions from the community! Whether it's reporting a bug, submit
 
 Khoji is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License). See the LICENSE file for more details(Update pending).
 
+## Known Bugs
+
+- **1:** Interacting with the file system upon first launch to reestablish access to folders using security-scoped bookmarks gives warning.
+
 ---
 
 We hope Khoji enhances your search and discovery process on macOS. Happy exploring!
