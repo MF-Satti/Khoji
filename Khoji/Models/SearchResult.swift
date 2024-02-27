@@ -6,4 +6,5 @@ struct SearchResult: Identifiable {
     let name: String
     let path: String
     let icon: NSImage
+    let date: Date
 }

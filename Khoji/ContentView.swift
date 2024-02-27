@@ -41,12 +41,22 @@ struct ContentView: View {
                             Text(result.path)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
+                            Text("Modified: \(result.date, formatter: dateFormatter)")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
                         }
                     }
                 }
                 .frame(maxHeight: 200)
             }
         }
+    }
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
     }
 }
 
@@ -100,9 +110,10 @@ class SharedState: ObservableObject {
         var results: [SearchResult] = []
         for item in query.results as! [NSMetadataItem] {
             if let path = item.value(forAttribute: NSMetadataItemPathKey) as? String,
-               let name = item.value(forAttribute: NSMetadataItemFSNameKey) as? String {
+               let name = item.value(forAttribute: NSMetadataItemFSNameKey) as? String,
+               let date = item.value(forAttribute: NSMetadataItemFSContentChangeDateKey) as? Date {
                 let icon = NSWorkspace.shared.icon(forFile: path)
-                let result = SearchResult(name: name, path: path, icon: icon)
+                let result = SearchResult(name: name, path: path, icon: icon, date: date)
                 results.append(result)
             }
         }
