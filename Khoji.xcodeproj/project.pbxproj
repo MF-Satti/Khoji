@@ -13,6 +13,7 @@
 		4D5E03422B8CE43500A33FB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5E03412B8CE43500A33FB8 /* Preview Assets.xcassets */; };
 		4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */; };
 		4D5E036F2B8D3D8900A33FB8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E036E2B8D3D8900A33FB8 /* Constants.swift */; };
+		4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4D5E03432B8CE43500A33FB8 /* Khoji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Khoji.entitlements; sourceTree = "<group>"; };
 		4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D5E036E2B8D3D8900A33FB8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		4D5E03392B8CE43400A33FB8 /* Khoji */ = {
 			isa = PBXGroup;
 			children = (
+				4D5E03742B8D73AA00A33FB8 /* Models */,
 				4D5E033A2B8CE43400A33FB8 /* KhojiApp.swift */,
 				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
 				4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */,
@@ -73,6 +76,14 @@
 				4D5E03412B8CE43500A33FB8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4D5E03742B8D73AA00A33FB8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +158,7 @@
 			files = (
 				4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */,
 				4D5E033D2B8CE43400A33FB8 /* ContentView.swift in Sources */,
+				4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */,
 				4D5E033B2B8CE43400A33FB8 /* KhojiApp.swift in Sources */,
 				4D5E036F2B8D3D8900A33FB8 /* Constants.swift in Sources */,
 			);

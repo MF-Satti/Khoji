@@ -28,8 +28,21 @@ struct ContentView: View {
             .cornerRadius(UIConstants.searchBarCornerRadius)
             
             if !sharedState.searchText.isEmpty {
-                List(sharedState.searchResults, id: \.self) { item in
-                    Text(item)
+                List(sharedState.searchResults) { result in
+                    HStack {
+                        Image(nsImage: result.icon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                        
+                        VStack(alignment: .leading) {
+                            Text(result.name)
+                                .font(.headline)
+                            Text(result.path)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
                 }
                 .frame(maxHeight: 200)
             }
@@ -40,7 +53,7 @@ struct ContentView: View {
 // Also a Search ViewModel
 class SharedState: ObservableObject {
     @Published var searchText: String = ""
-    @Published var searchResults: [String] = []
+    @Published var searchResults: [SearchResult] = []
 
     private var query: NSMetadataQuery?
     private var cancellables = Set<AnyCancellable>()
@@ -82,23 +95,20 @@ class SharedState: ObservableObject {
 
     @objc private func queryDidFinishGathering(_ notification: Notification) {
         guard let query = notification.object as? NSMetadataQuery else { return }
-        query.stop() // Important to stop the query to free up resources
-
-        var results: [String] = []
+        query.stop() // stop query to free up resources
+        
+        var results: [SearchResult] = []
         for item in query.results as! [NSMetadataItem] {
-            if let path = item.value(forAttribute: NSMetadataItemPathKey) as? String {
-                results.append(path)
+            if let path = item.value(forAttribute: NSMetadataItemPathKey) as? String,
+               let name = item.value(forAttribute: NSMetadataItemFSNameKey) as? String {
+                let icon = NSWorkspace.shared.icon(forFile: path)
+                let result = SearchResult(name: name, path: path, icon: icon)
+                results.append(result)
             }
         }
-
+        
         DispatchQueue.main.async {
             self.searchResults = results
         }
-
-        NotificationCenter.default.removeObserver(self, name: .NSMetadataQueryDidFinishGathering, object: query)
     }
 }
-
-/*#Preview {
-    ContentView()
-}*/
