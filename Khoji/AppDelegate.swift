@@ -6,7 +6,7 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
-    var sharedState = SharedState()
+    var sharedState = SearchViewModel()
 
     override init() {
         super.init()
