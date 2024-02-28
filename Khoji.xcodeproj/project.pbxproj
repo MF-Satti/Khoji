@@ -74,7 +74,6 @@
 				4D5E03772B8D91D100A33FB8 /* ViewModels */,
 				4D5E03742B8D73AA00A33FB8 /* Models */,
 				4D5E033A2B8CE43400A33FB8 /* KhojiApp.swift */,
-				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
 				4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */,
 				4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */,
 				4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */,
@@ -116,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */,
+				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

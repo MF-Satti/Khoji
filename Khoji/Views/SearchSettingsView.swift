@@ -3,39 +3,45 @@ import SwiftUI
 
 struct SearchSettingsView: View {
     @Binding var settings: SearchSettings
-    @Environment(\.dismiss) var dismiss
-    
-    @State private var startDate = Date()
-    @State private var endDate = Date()
-    @State private var minSize = 0.0
-    @State private var maxSize = 100.0
     
     var body: some View {
         NavigationView {
             Form {
                 Toggle("Search by Date", isOn: $settings.searchByDate)
                 if settings.searchByDate {
-                    DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                    DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                    DatePicker("Start Date", selection: Binding(
+                        get: { self.settings.startDate ?? Date() },
+                        set: { self.settings.startDate = $0 }
+                    ), displayedComponents: .date)
+                    DatePicker("End Date", selection: Binding(
+                        get: { self.settings.endDate ?? Date() },
+                        set: { self.settings.endDate = $0 }
+                    ), displayedComponents: .date)
                 }
                 
                 Toggle("Search by Size", isOn: $settings.searchBySize)
                 if settings.searchBySize {
                     HStack {
-                        Text("Minimum Size: \(minSize, specifier: "%.1f") MB")
-                        Slider(value: $minSize, in: 0...maxSize)
+                        Text("Minimum Size: \(settings.minSize ?? 0.0, specifier: "%.1f") MB")
+                        Slider(value: Binding(
+                            get: { self.settings.minSize ?? 0.0 },
+                            set: { self.settings.minSize = $0 }
+                        ), in: 0...((settings.maxSize ?? 100.0) as Double))
                     }
                     HStack {
-                        Text("Maximum Size: \(maxSize, specifier: "%.1f") MB")
-                        Slider(value: $maxSize, in: minSize...100) // 100 MB as a max value for now
+                        Text("Maximum Size: \(settings.maxSize ?? 100.0, specifier: "%.1f") MB")
+                        Slider(value: Binding(
+                            get: { self.settings.maxSize ?? 100.0 },
+                            set: { self.settings.maxSize = $0 }
+                        ), in: (settings.minSize ?? 0.0)...100.0)
                     }
                 }
             }
-            .frame(width: 320, height: 320)
+            .frame(width: 330, height: 330)
             .navigationTitle("Search Settings")
         }
         .padding()
-        .frame(width: 350, height: 350)
+        .frame(width: 360, height: 360)
         //.adjustsWindowSizeDynamically() // TODO: fix dynamic resizing
     }
 }
