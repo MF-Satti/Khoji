@@ -3,8 +3,10 @@ import Cocoa
 
 class FileManagerService {
     static let shared = FileManagerService()
+    weak var delegate: WindowManagerDelegate?
     
     func openFile(atPath path: String) {
+        self.delegate?.hideSearchWindow()
         // check if have stored access for the folder containing the file
         if hasStoredAccessForFolderContainingFile(atPath: path) {
             // use the stored access to open the file directly
@@ -15,6 +17,7 @@ class FileManagerService {
             if let directory = directory(forPath: path) {
                 // if no stored access, request folder access first for the determined directory
                 requestAccessToFolder(directory) {
+                    self.delegate?.showSearchWindow()
                     // retry opening the file after obtaining access
                     self.openFile(atPath: path)
                 }
@@ -78,6 +81,7 @@ class FileManagerService {
                 } else {
                     // handle the case where the user did not grant access
                     // possibly show an error or alert to the user
+                    self.delegate?.showSearchWindow() // and then show the search bar again
                 }
             }
         }

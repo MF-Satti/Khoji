@@ -58,3 +58,23 @@ class WindowManager {
         NSApp.activate(ignoringOtherApps: true)
     }
 }
+
+protocol WindowManagerDelegate: AnyObject {
+    func hideSearchWindow()
+    func showSearchWindow()
+}
+
+extension WindowManager: WindowManagerDelegate {
+    func hideSearchWindow() {
+        DispatchQueue.main.async {
+            self.window.orderOut(nil)
+        }
+    }
+
+    func showSearchWindow() {
+        DispatchQueue.main.async {
+            self.window.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
+}

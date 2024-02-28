@@ -9,5 +9,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.setActivationPolicy(.accessory)
         
         windowManager = WindowManager(sharedState: sharedState)
+        FileManagerService.shared.delegate = windowManager
     }
 }

@@ -3,7 +3,6 @@ import AppKit
 
 @main
 struct KhojiApp: App {
-    
     // Use AppKit's App Lifecycle
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
