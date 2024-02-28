@@ -90,3 +90,9 @@ extension WindowManager: WindowManagerDelegate {
         }
     }
 }
+
+extension WindowManager {
+    func toggleSearchSettingsView() {
+        print("settings toggle")
+    }
+}
