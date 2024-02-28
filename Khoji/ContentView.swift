@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
-                .sheet(isPresented: $showSettings) {
+                .popover(isPresented: $showSettings) {
                     SearchSettingsView(settings: $settings)
                 }
             }

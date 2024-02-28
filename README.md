@@ -38,7 +38,10 @@ Khoji is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_Lice
 ## Known Bugs
 
 - **1:** Interacting with the file system upon first launch to reestablish access to folders using security-scoped bookmarks gives warning.
+- **2:** Search is performed system wide but accessing is only limited to Desktop, Downloads and Documents
+- **3:** Dynamic resizing of Advanced search UI may break.
+- **4:** Security scoped bookmarks limited to user defaults.
 
 ---
 
-We hope Khoji enhances your search and discovery process on macOS. Happy exploring!
+I hope Khoji enhances your search process on macOS and gives you inspiration for a similar project. Happy exploring!
