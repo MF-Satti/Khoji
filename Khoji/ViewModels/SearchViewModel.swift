@@ -6,6 +6,8 @@ class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var searchResults: [SearchResult] = []
     @Published var searchSettings = SearchSettings()
+    
+    @Published var showSettings = false
 
     private var query: NSMetadataQuery?
     private var cancellables = Set<AnyCancellable>()

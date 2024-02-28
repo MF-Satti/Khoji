@@ -58,3 +58,43 @@ class WindowManager {
         NSApp.activate(ignoringOtherApps: true)
     }
 }
+
+protocol WindowManagerDelegate: AnyObject {
+    func hideSearchWindow()
+    func showSearchWindow()
+    func showAlert(withMessage message: String, informativeText: String)
+}
+
+extension WindowManager: WindowManagerDelegate {
+    func hideSearchWindow() {
+        DispatchQueue.main.async {
+            self.window.orderOut(nil)
+        }
+    }
+
+    func showSearchWindow() {
+        DispatchQueue.main.async {
+            self.window.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
+    
+    func showAlert(withMessage message: String, informativeText: String) {
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = message
+            alert.informativeText = informativeText
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
+    }
+}
+
+extension WindowManager {
+    func toggleSearchSettingsView() {
+        DispatchQueue.main.async {
+            self.sharedState.showSettings.toggle()
+        }
+    }
+}

@@ -3,13 +3,16 @@ import Cocoa
 
 class FileManagerService {
     static let shared = FileManagerService()
+    weak var delegate: WindowManagerDelegate?
     
     func openFile(atPath path: String) {
+        self.delegate?.hideSearchWindow()
         // check if have stored access for the folder containing the file
         if hasStoredAccessForFolderContainingFile(atPath: path) {
             // use the stored access to open the file directly
             let url = URL(fileURLWithPath: path).standardizedFileURL
             NSWorkspace.shared.open(url)
+            self.delegate?.showSearchWindow()
         } else {
             // dynamically determine the directory from the path
             if let directory = directory(forPath: path) {
@@ -76,8 +79,9 @@ class FileManagerService {
                     self.persistAccessToFolder(url: url)
                     completion()
                 } else {
-                    // handle the case where the user did not grant access
-                    // possibly show an error or alert to the user
+                    self.delegate?.showSearchWindow()
+                    self.delegate?.showAlert(withMessage: "Access Denied",
+                                             informativeText: "You did not grant access to the folder. Please grant access to use this feature.")
                 }
             }
         }
@@ -148,7 +152,7 @@ class FileManagerService {
             if bookmarkedURL.startAccessingSecurityScopedResource() {
                 // successfully re-established access
                 // can stop accessing when no longer need access, or might keep it for the app's lifetime, depending on the use case.
-                // consider where to call `stopAccessingSecurityScopedResource()` if you start it here.
+                // consider where to call `stopAccessingSecurityScopedResource()` if we start it here.
             } else {
                 print("Failed to re-establish access using bookmark.")
             }

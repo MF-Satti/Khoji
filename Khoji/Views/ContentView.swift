@@ -1,9 +1,9 @@
 import SwiftUI
+import AppKit
 
 struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
     
-    @State private var showSettings = false
     @State private var searchSettings = SearchSettings()
     
     var body: some View {
@@ -16,7 +16,7 @@ struct ContentView: View {
                     .font(.system(size: UIConstants.searchBarFontSize))
                     .shadow(radius: 5)
                 Button(action: {
-                    showSettings = true
+                    searchSharedState.showSettings = true
                 }) {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
-                .popover(isPresented: $showSettings) {
+                .popover(isPresented: $searchSharedState.showSettings) {
                     SearchSettingsView(settings: $searchSettings)
                         .onDisappear {
                             searchSharedState.searchSettings = searchSettings
@@ -36,29 +36,30 @@ struct ContentView: View {
             .cornerRadius(UIConstants.searchBarCornerRadius)
             
             if !searchSharedState.searchText.isEmpty {
-                List(searchSharedState.searchResults) { result in
+                List {
+                    // existing search results
+                    ForEach(searchSharedState.searchResults) { result in
+                        Button(action: {
+                            FileManagerService.shared.openFile(atPath: result.path)
+                        }) {
+                            SearchResultRow(result: result)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    
+                    // "Search the web" entry
                     Button(action: {
-                        openFile(atPath: result.path)
+                        searchTheWeb(for: searchSharedState.searchText)
                     }) {
                         HStack {
-                            Image(nsImage: result.icon)
+                            Image(systemName: "globe")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 40, height: 40)
-                            
-                            VStack(alignment: .leading) {
-                                Text(result.name)
-                                    .font(.headline)
-                                Text(result.path)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                                Text("Modified: \(result.date, formatter: dateFormatter)")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                            }
+                            Text("Search the web for: \(searchSharedState.searchText)")
+                                .foregroundColor(.blue)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle()) // could use TapGesture afterwards
                 }
                 .frame(maxHeight: 200)
             }
@@ -67,14 +68,13 @@ struct ContentView: View {
         }
     }
     
-    private func openFile(atPath path: String) {
-        FileManagerService.shared.openFile(atPath: path) // TODO: add opacity or a way to actually see the opened panel
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
+    func searchTheWeb(for query: String) {
+        guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: "https://www.google.com/search?q=\(encodedQuery)") else {
+            print("failed to create search URL")
+            return
+        }
+        
+        NSWorkspace.shared.open(url)
     }
 }

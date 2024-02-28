@@ -16,10 +16,10 @@ In Hindi, "Khoj" refers to a search, quest, investigation, discovery, exploratio
 
 ## Features
 
-- **Fast and Efficient Search:** Quickly find files, documents, applications, and more on your macOS device.
+- **Searching:** Find files, documents, applications, and more on your macOS device.
 - **Advanced Search Capabilities:** Utilize filters and advanced search queries to narrow down results and find exactly what you're looking for.
 - **Intuitive User Interface:** A clean, user-friendly interface inspired by the simplicity of Spotlight, but with added functionality and customization options.
-- **Keyboard Shortcuts:** Khoji works with keyboards shortcuts.
+- **Keyboard Shortcuts:** Khoji works with keyboards shortcuts. `Command+,` to open settings/preferences.
 - **Cultural Integration:** Experience a search tool that appreciates cultural nuances.
 
 ## Contributing
@@ -37,7 +37,7 @@ I welcome contributions from the community! Whether it's reporting a bug, submit
 
 ## License
 
-Khoji is released under the [MIT License](https://github.com/MF-Satti/Khoji/License). See the LICENSE file for more details(Update pending).
+Khoji is released under the [MIT License](https://github.com/MF-Satti/Khoji/License). See the LICENSE file for more details.
 
 ## Known Bugs
 
@@ -47,7 +47,6 @@ Khoji is released under the [MIT License](https://github.com/MF-Satti/Khoji/Lice
 - **4:** Security scoped bookmarks limited to user defaults.
 - **5:** For queries searching for larger datasets, the UI hangs momentarily 
 - **6:** Upon first launch UI needs to be clicked to start typing (check activation policy)
-- **7:** Search UI overlaps and obstructs panel that grants access the first time.
 
 ---
 
