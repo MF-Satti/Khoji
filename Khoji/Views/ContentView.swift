@@ -68,7 +68,7 @@ struct ContentView: View {
     }
     
     private func openFile(atPath path: String) {
-        FileManagerService.shared.openFile(atPath: path) // add opacity or a way to actually see the opened panel
+        FileManagerService.shared.openFile(atPath: path) // TODO: add opacity or a way to actually see the opened panel
     }
     
     private var dateFormatter: DateFormatter {
