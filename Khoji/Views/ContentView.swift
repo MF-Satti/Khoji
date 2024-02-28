@@ -38,7 +38,7 @@ struct ContentView: View {
             if !searchSharedState.searchText.isEmpty {
                 List(searchSharedState.searchResults) { result in
                     Button(action: {
-                        openFile(atPath: result.path)
+                        FileManagerService.shared.openFile(atPath: result.path)
                     }) {
                         HStack {
                             Image(nsImage: result.icon)
@@ -65,10 +65,6 @@ struct ContentView: View {
         }.onAppear {
             FileManagerService.shared.reestablishAccessToFolder()
         }
-    }
-    
-    private func openFile(atPath path: String) {
-        FileManagerService.shared.openFile(atPath: path) // TODO: add opacity or a way to actually see the opened panel
     }
     
     private var dateFormatter: DateFormatter {
