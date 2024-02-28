@@ -12,12 +12,12 @@ class FileManagerService {
             // use the stored access to open the file directly
             let url = URL(fileURLWithPath: path).standardizedFileURL
             NSWorkspace.shared.open(url)
+            self.delegate?.showSearchWindow()
         } else {
             // dynamically determine the directory from the path
             if let directory = directory(forPath: path) {
                 // if no stored access, request folder access first for the determined directory
                 requestAccessToFolder(directory) {
-                    self.delegate?.showSearchWindow()
                     // retry opening the file after obtaining access
                     self.openFile(atPath: path)
                 }

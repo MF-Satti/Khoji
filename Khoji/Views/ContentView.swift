@@ -36,34 +36,60 @@ struct ContentView: View {
             .cornerRadius(UIConstants.searchBarCornerRadius)
             
             if !searchSharedState.searchText.isEmpty {
-                List(searchSharedState.searchResults) { result in
+                List {
+                    // existing search results
+                    ForEach(searchSharedState.searchResults) { result in
+                        Button(action: {
+                            FileManagerService.shared.openFile(atPath: result.path)
+                        }) {
+                            SearchResultRow(result: result)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    
+                    // "Search the web" entry
                     Button(action: {
-                        FileManagerService.shared.openFile(atPath: result.path)
+                        // Implement your web search action here
+                        print("Search the web for: \(searchSharedState.searchText)")
                     }) {
                         HStack {
-                            Image(nsImage: result.icon)
+                            Image(systemName: "globe")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 40, height: 40)
-                            
-                            VStack(alignment: .leading) {
-                                Text(result.name)
-                                    .font(.headline)
-                                Text(result.path)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                                Text("Modified: \(result.date, formatter: dateFormatter)")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                            }
+                            Text("Search the web for: \(searchSharedState.searchText)")
+                                .foregroundColor(.blue)
                         }
                     }
-                    .buttonStyle(PlainButtonStyle()) // could use TapGesture afterwards
                 }
                 .frame(maxHeight: 200)
             }
         }.onAppear {
             FileManagerService.shared.reestablishAccessToFolder()
+        }
+    }
+}
+
+struct SearchResultRow: View {
+    let result: SearchResult
+    
+    var body: some View {
+        HStack {
+            Image(nsImage: result.icon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+            
+            VStack(alignment: .leading) {
+                Text(result.name)
+                    .font(.headline)
+                Text(result.path)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                Text("Modified: \(result.date, formatter: dateFormatter)")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }
         }
     }
     
