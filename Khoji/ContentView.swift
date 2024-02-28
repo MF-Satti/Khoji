@@ -75,32 +75,3 @@ struct ContentView: View {
         return formatter
     }
 }
-
-struct SearchSettingsView: View {
-    @Binding var settings: SearchSettings
-    @Environment(\.dismiss) var dismiss
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Toggle("Search by Date", isOn: $settings.searchByDate)
-                Toggle("Search by Size", isOn: $settings.searchBySize)
-            }
-            .navigationTitle("Search Settings")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
-        }
-        .padding()
-        .frame(width: 160, height: 120)
-    }
-}
-
-struct SearchSettings {
-    var searchByDate: Bool = false
-    var searchBySize: Bool = false
-}
