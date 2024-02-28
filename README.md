@@ -1,6 +1,6 @@
 # Khoji
 
-Khoji is a macOS application inspired by Spotlight, designed to enhance the searching and finding experience on your computer. Leveraging the simplicity of Spotlight with additional features and functionalities, Khoji aims to provide a more robust and culturally enriched search experience. The name "Khoji" is derived from the Hindi word "Khoj", which means search, quest, investigation, discovery, exploration, and more.
+Khoji is a macOS application inspired by Spotlight. The name "Khoji" is derived from the Hindi word "Khoj", which means search, quest, investigation, discovery, exploration, and more.
 
 ## Pronunciation
 
@@ -10,13 +10,17 @@ Khoji is pronounced as [ khō-jī, kho-jee ].
 
 In Hindi, "Khoj" refers to a search, quest, investigation, discovery, exploration, etc. The term encapsulates various aspects of the search process, from the initial quest to the final discovery. Khoji aims to embody this spirit of exploration and discovery in the digital realm.
 
+## Purpose
+- ** As of now the purpose of this project is to serve as a proof of concept and showcase interoperability between SwiftUI and AppKit**
+
+
 ## Features
 
 - **Fast and Efficient Search:** Quickly find files, documents, applications, and more on your macOS device.
 - **Advanced Search Capabilities:** Utilize filters and advanced search queries to narrow down results and find exactly what you're looking for.
 - **Intuitive User Interface:** A clean, user-friendly interface inspired by the simplicity of Spotlight, but with added functionality and customization options.
 - **Keyboard Shortcuts:** Khoji works with keyboards shortcuts.
-- **Cultural Integration:** Experience a search tool that appreciates cultural nuances, offering more than just a functional aspect.
+- **Cultural Integration:** Experience a search tool that appreciates cultural nuances.
 
 ## Contributing
 
@@ -33,7 +37,7 @@ I welcome contributions from the community! Whether it's reporting a bug, submit
 
 ## License
 
-Khoji is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License). See the LICENSE file for more details(Update pending).
+Khoji is released under the [MIT License](https://github.com/MF-Satti/Khoji/License). See the LICENSE file for more details(Update pending).
 
 ## Known Bugs
 
@@ -41,6 +45,9 @@ Khoji is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_Lice
 - **2:** Search is performed system wide but accessing is only limited to Desktop, Downloads and Documents
 - **3:** Dynamic resizing of Advanced search UI may break.
 - **4:** Security scoped bookmarks limited to user defaults.
+- **5:** For queries searching for larger datasets, the UI hangs momentarily 
+- **6:** Upon first launch UI needs to be clicked to start typing (check activation policy)
+- **7:** Search UI overlaps and obstructs panel that grants access the first time.
 
 ---
 

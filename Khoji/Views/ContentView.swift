@@ -4,7 +4,7 @@ struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
     
     @State private var showSettings = false
-    @State private var settings = SearchSettings()
+    @State private var searchSettings = SearchSettings()
     
     var body: some View {
         VStack {
@@ -26,7 +26,10 @@ struct ContentView: View {
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
                 .popover(isPresented: $showSettings) {
-                    SearchSettingsView(settings: $settings)
+                    SearchSettingsView(settings: $searchSettings)
+                        .onDisappear {
+                            searchSharedState.searchSettings = searchSettings
+                        }
                 }
             }
             .background(Color(.systemGray))
