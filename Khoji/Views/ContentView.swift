@@ -4,7 +4,6 @@ import AppKit
 struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
     
-    @State private var showSettings = false
     @State private var searchSettings = SearchSettings()
     
     var body: some View {
@@ -17,7 +16,7 @@ struct ContentView: View {
                     .font(.system(size: UIConstants.searchBarFontSize))
                     .shadow(radius: 5)
                 Button(action: {
-                    showSettings = true
+                    searchSharedState.showSettings = true
                 }) {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -26,7 +25,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
-                .popover(isPresented: $showSettings) {
+                .popover(isPresented: $searchSharedState.showSettings) {
                     SearchSettingsView(settings: $searchSettings)
                         .onDisappear {
                             searchSharedState.searchSettings = searchSettings

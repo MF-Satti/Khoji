@@ -19,7 +19,7 @@ In Hindi, "Khoj" refers to a search, quest, investigation, discovery, exploratio
 - **Searching:** Find files, documents, applications, and more on your macOS device.
 - **Advanced Search Capabilities:** Utilize filters and advanced search queries to narrow down results and find exactly what you're looking for.
 - **Intuitive User Interface:** A clean, user-friendly interface inspired by the simplicity of Spotlight, but with added functionality and customization options.
-- **Keyboard Shortcuts:** Khoji works with keyboards shortcuts.
+- **Keyboard Shortcuts:** Khoji works with keyboards shortcuts. `Command+,` to open settings/preferences.
 - **Cultural Integration:** Experience a search tool that appreciates cultural nuances.
 
 ## Contributing

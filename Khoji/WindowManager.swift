@@ -93,6 +93,8 @@ extension WindowManager: WindowManagerDelegate {
 
 extension WindowManager {
     func toggleSearchSettingsView() {
-        print("settings toggle")
+        DispatchQueue.main.async {
+            self.sharedState.showSettings.toggle()
+        }
     }
 }
