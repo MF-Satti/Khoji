@@ -20,6 +20,7 @@
 		4D5E037F2B8E778600A33FB8 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */; };
 		4D5E03822B8EAFFA00A33FB8 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */; };
 		4D5E03842B8EB02F00A33FB8 /* SearchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */; };
+		4D5E03862B8FD58D00A33FB8 /* SearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03852B8FD58D00A33FB8 /* SearchResultRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
 		4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettings.swift; sourceTree = "<group>"; };
+		4D5E03852B8FD58D00A33FB8 /* SearchResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				4D5E03752B8D73BA00A33FB8 /* SearchResult.swift */,
 				4D5E037A2B8E64CC00A33FB8 /* AccessibleDirectory.swift */,
+				4D5E03852B8FD58D00A33FB8 /* SearchResultRow.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */,
 				4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */,
 				4D5E03842B8EB02F00A33FB8 /* SearchSettings.swift in Sources */,
+				4D5E03862B8FD58D00A33FB8 /* SearchResultRow.swift in Sources */,
 				4D5E033D2B8CE43400A33FB8 /* ContentView.swift in Sources */,
 				4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */,
 				4D5E033B2B8CE43400A33FB8 /* KhojiApp.swift in Sources */,

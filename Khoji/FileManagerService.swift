@@ -152,7 +152,7 @@ class FileManagerService {
             if bookmarkedURL.startAccessingSecurityScopedResource() {
                 // successfully re-established access
                 // can stop accessing when no longer need access, or might keep it for the app's lifetime, depending on the use case.
-                // consider where to call `stopAccessingSecurityScopedResource()` if you start it here.
+                // consider where to call `stopAccessingSecurityScopedResource()` if we start it here.
             } else {
                 print("Failed to re-establish access using bookmark.")
             }

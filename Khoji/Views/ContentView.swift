@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
@@ -49,8 +50,7 @@ struct ContentView: View {
                     
                     // "Search the web" entry
                     Button(action: {
-                        // Implement your web search action here
-                        print("Search the web for: \(searchSharedState.searchText)")
+                        searchTheWeb(for: searchSharedState.searchText)
                     }) {
                         HStack {
                             Image(systemName: "globe")
@@ -68,35 +68,14 @@ struct ContentView: View {
             FileManagerService.shared.reestablishAccessToFolder()
         }
     }
-}
-
-struct SearchResultRow: View {
-    let result: SearchResult
     
-    var body: some View {
-        HStack {
-            Image(nsImage: result.icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            VStack(alignment: .leading) {
-                Text(result.name)
-                    .font(.headline)
-                Text(result.path)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                Text("Modified: \(result.date, formatter: dateFormatter)")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-            }
+    func searchTheWeb(for query: String) {
+        guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: "https://www.google.com/search?q=\(encodedQuery)") else {
+            print("failed to create search URL")
+            return
         }
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
+        
+        NSWorkspace.shared.open(url)
     }
 }
