@@ -79,9 +79,9 @@ class FileManagerService {
                     self.persistAccessToFolder(url: url)
                     completion()
                 } else {
-                    // handle the case where the user did not grant access
-                    // possibly show an error or alert to the user
-                    self.delegate?.showSearchWindow() // and then show the search bar again
+                    self.delegate?.showSearchWindow()
+                    self.delegate?.showAlert(withMessage: "Access Denied",
+                                             informativeText: "You did not grant access to the folder. Please grant access to use this feature.")
                 }
             }
         }

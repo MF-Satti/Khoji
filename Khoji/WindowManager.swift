@@ -62,6 +62,7 @@ class WindowManager {
 protocol WindowManagerDelegate: AnyObject {
     func hideSearchWindow()
     func showSearchWindow()
+    func showAlert(withMessage message: String, informativeText: String)
 }
 
 extension WindowManager: WindowManagerDelegate {
@@ -75,6 +76,17 @@ extension WindowManager: WindowManagerDelegate {
         DispatchQueue.main.async {
             self.window.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
+        }
+    }
+    
+    func showAlert(withMessage message: String, informativeText: String) {
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = message
+            alert.informativeText = informativeText
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
         }
     }
 }
