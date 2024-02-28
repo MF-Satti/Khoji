@@ -3,6 +3,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var searchSharedState: SearchViewModel
     
+    @State private var showSettings = false
+    @State private var searchSettings = SearchSettings()
+    
     var body: some View {
         VStack {
             // Search bar
@@ -13,7 +16,7 @@ struct ContentView: View {
                     .font(.system(size: UIConstants.searchBarFontSize))
                     .shadow(radius: 5)
                 Button(action: {
-                    // TODO: Add settings action here for advanced search criteria, search by type, size, date etc
+                    showSettings = true
                 }) {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -22,6 +25,12 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, UIConstants.searchBarPadding)
+                .popover(isPresented: $showSettings) {
+                    SearchSettingsView(settings: $searchSettings)
+                        .onDisappear {
+                            searchSharedState.searchSettings = searchSettings
+                        }
+                }
             }
             .background(Color(.systemGray))
             .cornerRadius(UIConstants.searchBarCornerRadius)
@@ -54,12 +63,12 @@ struct ContentView: View {
                 .frame(maxHeight: 200)
             }
         }.onAppear {
-            FileManagerService.shared.reestablishAccessToDownloadsFolder()
+            FileManagerService.shared.reestablishAccessToFolder()
         }
     }
     
     private func openFile(atPath path: String) {
-        FileManagerService.shared.openFile(atPath: path)
+        FileManagerService.shared.openFile(atPath: path) // TODO: add opacity or a way to actually see the opened panel
     }
     
     private var dateFormatter: DateFormatter {

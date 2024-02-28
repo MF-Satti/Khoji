@@ -18,6 +18,8 @@
 		4D5E037B2B8E64CC00A33FB8 /* AccessibleDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037A2B8E64CC00A33FB8 /* AccessibleDirectory.swift */; };
 		4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */; };
 		4D5E037F2B8E778600A33FB8 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */; };
+		4D5E03822B8EAFFA00A33FB8 /* SearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */; };
+		4D5E03842B8EB02F00A33FB8 /* SearchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4D5E037A2B8E64CC00A33FB8 /* AccessibleDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleDirectory.swift; sourceTree = "<group>"; };
 		4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsView.swift; sourceTree = "<group>"; };
+		4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +70,10 @@
 		4D5E03392B8CE43400A33FB8 /* Khoji */ = {
 			isa = PBXGroup;
 			children = (
+				4D5E03802B8EAFD100A33FB8 /* Views */,
 				4D5E03772B8D91D100A33FB8 /* ViewModels */,
 				4D5E03742B8D73AA00A33FB8 /* Models */,
 				4D5E033A2B8CE43400A33FB8 /* KhojiApp.swift */,
-				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
 				4D5E037E2B8E778600A33FB8 /* FileManagerService.swift */,
 				4D5E036A2B8D31B700A33FB8 /* AppDelegate.swift */,
 				4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */,
@@ -102,8 +106,18 @@
 			isa = PBXGroup;
 			children = (
 				4D5E03782B8D91E300A33FB8 /* SearchViewModel.swift */,
+				4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4D5E03802B8EAFD100A33FB8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D5E03812B8EAFFA00A33FB8 /* SearchSettingsView.swift */,
+				4D5E033C2B8CE43400A33FB8 /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,8 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D5E03792B8D91E300A33FB8 /* SearchViewModel.swift in Sources */,
+				4D5E03822B8EAFFA00A33FB8 /* SearchSettingsView.swift in Sources */,
 				4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */,
 				4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */,
+				4D5E03842B8EB02F00A33FB8 /* SearchSettings.swift in Sources */,
 				4D5E033D2B8CE43400A33FB8 /* ContentView.swift in Sources */,
 				4D5E03762B8D73BA00A33FB8 /* SearchResult.swift in Sources */,
 				4D5E033B2B8CE43400A33FB8 /* KhojiApp.swift in Sources */,
