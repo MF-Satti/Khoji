@@ -13,6 +13,13 @@ In Hindi, "Khoj" refers to a search, quest, investigation, discovery, exploratio
 ## Purpose
 - ** As of now the purpose of this project is to serve as a proof of concept and showcase interoperability between SwiftUI and AppKit**
 
+## Distribution
+
+This alpha release is provided as is, no DMG file. To use Khoji on your macOS:
+
+- **1:** Clone the repo.
+
+- **2:** Launch Khoji from your Xcode, no external dependencies.
 
 ## Features
 
