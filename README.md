@@ -45,8 +45,7 @@ Khoji is released under the [MIT License](https://github.com/MF-Satti/Khoji/Lice
 - **2:** Search is performed system wide but accessing is only limited to Desktop, Downloads and Documents
 - **3:** Dynamic resizing of Advanced search UI may break.
 - **4:** Security scoped bookmarks limited to user defaults.
-- **5:** For queries searching for larger datasets, the UI hangs momentarily 
-- **6:** Upon first launch UI needs to be clicked to start typing (check activation policy)
+- **5:** Upon first launch UI needs to be clicked to start typing (check activation policy)
 
 ---
 
