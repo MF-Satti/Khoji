@@ -6,6 +6,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var searchResults: [SearchResult] = []
     @Published var searchSettings = SearchSettings()
+    @Published var isSearching: Bool = false
     
     @Published var showSettings = false
 
@@ -38,7 +39,7 @@ class SearchViewModel: ObservableObject {
             self.searchResults = []
             return
         }
-
+        self.isSearching = true
         query?.stop() // Stop previous query if any
         NotificationCenter.default.removeObserver(self, name: .NSMetadataQueryDidFinishGathering, object: nil)
 
@@ -91,6 +92,7 @@ class SearchViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 self?.searchResults = filteredResults
+                self?.isSearching = false
             }
         }
     }

@@ -35,33 +35,40 @@ struct ContentView: View {
             .background(Color(.systemGray))
             .cornerRadius(UIConstants.searchBarCornerRadius)
             
-            if !searchSharedState.searchText.isEmpty {
-                List {
-                    // existing search results
-                    ForEach(searchSharedState.searchResults) { result in
+            ZStack {
+                if !searchSharedState.searchText.isEmpty {
+                    List {
+                        // existing search results
+                        ForEach(searchSharedState.searchResults) { result in
+                            Button(action: {
+                                FileManagerService.shared.openFile(atPath: result.path)
+                            }) {
+                                SearchResultRow(result: result)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                        
+                        // "Search the web" entry
                         Button(action: {
-                            FileManagerService.shared.openFile(atPath: result.path)
+                            searchTheWeb(for: searchSharedState.searchText)
                         }) {
-                            SearchResultRow(result: result)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                    
-                    // "Search the web" entry
-                    Button(action: {
-                        searchTheWeb(for: searchSharedState.searchText)
-                    }) {
-                        HStack {
-                            Image(systemName: "globe")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                            Text("Search the web for: \(searchSharedState.searchText)")
-                                .foregroundColor(.blue)
+                            HStack {
+                                Image(systemName: "globe")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                Text("Search the web for: \(searchSharedState.searchText)")
+                                    .foregroundColor(.blue)
+                            }
                         }
                     }
+                    .frame(maxHeight: 200)
                 }
-                .frame(maxHeight: 200)
+                if searchSharedState.isSearching {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
+                }
             }
         }.onAppear {
             FileManagerService.shared.reestablishAccessToFolder()
