@@ -4,8 +4,12 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 
-//forward
-@protocol WindowManagerDelegate;
+// Redefine WindowManagerDelegate
+@protocol WindowManagerDelegate <NSObject>
+- (void)hideSearchWindow;
+- (void)showSearchWindow;
+- (void)showAlertWithMessage:(NSString *)message informativeText:(NSString *)informativeText;
+@end
 
 // Redefine the AccessibleDirectory enum
 typedef NS_ENUM(NSUInteger, AccessibleDirectory) {
