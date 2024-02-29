@@ -41,7 +41,7 @@ struct ContentView: View {
                         // existing search results
                         ForEach(searchSharedState.searchResults) { result in
                             Button(action: {
-                                FileManagerService.shared.openFile(atPath: result.path)
+                                FileManagerService.sharedInstance().openFile(atPath: result.path)
                             }) {
                                 SearchResultRow(result: result)
                             }
@@ -71,7 +71,7 @@ struct ContentView: View {
                 }
             }
         }.onAppear {
-            FileManagerService.shared.reestablishAccessToFolder()
+            FileManagerService.sharedInstance().reestablishAccessToFolder()
         }
     }
     

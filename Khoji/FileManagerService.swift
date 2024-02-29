@@ -1,7 +1,7 @@
 import Foundation
 import Cocoa
 
-class FileManagerService {
+/*class FileManagerService {
     static let shared = FileManagerService()
     weak var delegate: WindowManagerDelegate?
     
@@ -161,3 +161,4 @@ class FileManagerService {
         }
     }
 }
+*/

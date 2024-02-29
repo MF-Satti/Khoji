@@ -3,13 +3,14 @@ import Cocoa
 import Combine
 import SwiftUI
 
-class WindowManager {
+class WindowManager: NSObject {
     var window: NSWindow!
     var sharedState: SearchViewModel
     var cancellables = Set<AnyCancellable>()
     
     init(sharedState: SearchViewModel) {
         self.sharedState = sharedState
+        super.init()
         
         // observe changes to searchText
         self.sharedState.$searchText
@@ -57,12 +58,6 @@ class WindowManager {
         window.makeKey()
         NSApp.activate(ignoringOtherApps: true)
     }
-}
-
-protocol WindowManagerDelegate: AnyObject {
-    func hideSearchWindow()
-    func showSearchWindow()
-    func showAlert(withMessage message: String, informativeText: String)
 }
 
 extension WindowManager: WindowManagerDelegate {

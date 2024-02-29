@@ -12,7 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowManager = WindowManager(sharedState: sharedState)
         keyboardShortcutsManager = KeyboardShortcutsManager(windowManager: windowManager)
         
-        FileManagerService.shared.delegate = windowManager
+        FileManagerService.sharedInstance().delegate = windowManager
         
         keyboardShortcutsManager.registerGlobalShortcut()
     }

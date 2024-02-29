@@ -22,6 +22,8 @@
 		4D5E03842B8EB02F00A33FB8 /* SearchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */; };
 		4D5E03862B8FD58D00A33FB8 /* SearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03852B8FD58D00A33FB8 /* SearchResultRow.swift */; };
 		4D5E03882B8FF26C00A33FB8 /* KeyboardShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E03872B8FF26C00A33FB8 /* KeyboardShortcutsManager.swift */; };
+		4D5E038B2B9010AE00A33FB8 /* FileManagerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E038A2B9010AE00A33FB8 /* FileManagerService.m */; };
+		4D5E038E2B90181900A33FB8 /* WindowsManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E038D2B90181900A33FB8 /* WindowsManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		4D5E03832B8EB02F00A33FB8 /* SearchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettings.swift; sourceTree = "<group>"; };
 		4D5E03852B8FD58D00A33FB8 /* SearchResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRow.swift; sourceTree = "<group>"; };
 		4D5E03872B8FF26C00A33FB8 /* KeyboardShortcutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutsManager.swift; sourceTree = "<group>"; };
+		4D5E03892B9010AD00A33FB8 /* Khoji-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Khoji-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D5E038A2B9010AE00A33FB8 /* FileManagerService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileManagerService.m; sourceTree = "<group>"; };
+		4D5E038C2B9010E400A33FB8 /* FileManagerService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileManagerService.h; sourceTree = "<group>"; };
+		4D5E038D2B90181900A33FB8 /* WindowsManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +89,13 @@
 				4D5E037C2B8E6FB100A33FB8 /* WindowManager.swift */,
 				4D5E03872B8FF26C00A33FB8 /* KeyboardShortcutsManager.swift */,
 				4D5E036E2B8D3D8900A33FB8 /* Constants.swift */,
+				4D5E038A2B9010AE00A33FB8 /* FileManagerService.m */,
+				4D5E03892B9010AD00A33FB8 /* Khoji-Bridging-Header.h */,
+				4D5E038C2B9010E400A33FB8 /* FileManagerService.h */,
 				4D5E033E2B8CE43500A33FB8 /* Assets.xcassets */,
 				4D5E03432B8CE43500A33FB8 /* Khoji.entitlements */,
 				4D5E03402B8CE43500A33FB8 /* Preview Content */,
+				4D5E038D2B90181900A33FB8 /* WindowsManagerDelegate.swift */,
 			);
 			path = Khoji;
 			sourceTree = "<group>";
@@ -158,6 +168,7 @@
 				TargetAttributes = {
 					4D5E03362B8CE43400A33FB8 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -197,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D5E03792B8D91E300A33FB8 /* SearchViewModel.swift in Sources */,
+				4D5E038B2B9010AE00A33FB8 /* FileManagerService.m in Sources */,
 				4D5E03822B8EAFFA00A33FB8 /* SearchSettingsView.swift in Sources */,
 				4D5E037D2B8E6FB100A33FB8 /* WindowManager.swift in Sources */,
 				4D5E036B2B8D31B700A33FB8 /* AppDelegate.swift in Sources */,
@@ -209,6 +221,7 @@
 				4D5E037B2B8E64CC00A33FB8 /* AccessibleDirectory.swift in Sources */,
 				4D5E037F2B8E778600A33FB8 /* FileManagerService.swift in Sources */,
 				4D5E03882B8FF26C00A33FB8 /* KeyboardShortcutsManager.swift in Sources */,
+				4D5E038E2B90181900A33FB8 /* WindowsManagerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Khoji/Khoji.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -356,6 +370,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.faizan.Khoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Khoji/Khoji-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -365,6 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Khoji/Khoji.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -383,6 +400,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.faizan.Khoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Khoji/Khoji-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
